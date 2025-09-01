@@ -31,7 +31,7 @@ A straightforward inventory management tool built with JavaFX for the UI and Sup
 
 3. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/boring-inventory-manager.git (replace with your actual repo URL).
+git clone https://github.com/brandonacjones/BoringInventoryManager.git
 ```
 
 
