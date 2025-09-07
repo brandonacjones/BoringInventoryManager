@@ -44,6 +44,7 @@ public class MainController {
     @FXML private TableColumn<InventoryItem, String> fx_location;
     @FXML private CheckMenuItem fx_view_lighttheme;
     @FXML private CheckMenuItem fx_view_darktheme;
+    @FXML private MenuItem fx_file_activitylog;
     @FXML private Button fx_additem;
     @FXML private Button fx_signout;
     @FXML private Text fx_refreshtext;
@@ -246,5 +247,18 @@ public class MainController {
         } catch (Exception e) {
             showError("Logout Failed: " + e.getMessage());
         }
+    }
+
+    @FXML
+    private void viewAllLogs() throws Exception {
+        Stage logStage = new Stage();
+        logStage.setTitle("Activity Logs");
+
+        FXMLLoader logLoader = new FXMLLoader(getClass().getResource("/logs.fxml"));
+        Scene logScene = new Scene(logLoader.load(), this.scene.getWidth(), this.scene.getHeight());
+        logStage.setScene(logScene);
+
+        logScene.setUserAgentStylesheet(scene.getUserAgentStylesheet());
+        logStage.showAndWait();
     }
 }
