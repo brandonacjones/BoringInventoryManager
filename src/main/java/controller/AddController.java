@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.json.JSONObject;
 import util.DBUtil;
+import util.LogUtil;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -86,10 +88,14 @@ public class AddController {
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 201) {
+
+                LogUtil.logEvent(MainController.username, "CREATE", "Created PN <" + partNumber + ">.");
+
                 Alert success = new Alert(Alert.AlertType.INFORMATION);
                 success.setTitle("Submission Successful");
                 success.setContentText("Form data submitted successfully.");
                 success.showAndWait();
+
             } else {
                 showError("Database Error: " + response.body());
             }

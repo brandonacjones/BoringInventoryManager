@@ -30,7 +30,9 @@ public class LogController {
 
 
     @FXML
-    private void initialize() {
+    public void initialize() throws Exception {
+        logItems = logsDAO.getItems();
+
         fx_timecol.setCellValueFactory(new PropertyValueFactory<>("created_at"));
         fx_typecol.setCellValueFactory(new PropertyValueFactory<>("type"));
         fx_usercol.setCellValueFactory(new PropertyValueFactory<>("user"));

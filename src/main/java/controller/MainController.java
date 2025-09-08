@@ -28,6 +28,7 @@ import java.util.Optional;
 import dao.InventoryDAO;
 import model.InventoryItem;
 import util.DBUtil;
+import util.LogUtil;
 
 import static util.AlertUtil.showError;
 import static util.TimeUtil.getLocalTime;
@@ -55,12 +56,15 @@ public class MainController {
     private Scene scene;
     private List<InventoryItem> items = new ArrayList<>();
 
+    public static String username = "";
+
     public void setScene(Scene scene) {
         this.scene = scene;
     }
 
     public void setEmail(String email) {
         fx_signedinas.setText("Signed in as " + email);
+        username = email;
     }
 
     @FXML
@@ -207,6 +211,7 @@ public class MainController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
                 inventoryDAO.delete(item.getPartNumber());
+                LogUtil.logEvent(MainController.username, "DELETE", "Deleted PN <" + item.getPartNumber() + ">.");
                 refresh();
             } catch (SQLException e) {
                 showError(e.getMessage());

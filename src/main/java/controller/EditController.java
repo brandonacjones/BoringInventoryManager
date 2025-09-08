@@ -10,6 +10,8 @@ import model.InventoryItem;
 import org.json.JSONObject;
 import util.DBUtil;
 import dao.InventoryDAO;
+import util.LogUtil;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -104,6 +106,7 @@ public class EditController {
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() == 201) {
+                LogUtil.logEvent(MainController.username, "MODIFY", "Modified PN <" + partNumber + ">.");
                 cancel();
                 Alert success = new Alert(Alert.AlertType.INFORMATION);
                 success.setTitle("Submission Successful");

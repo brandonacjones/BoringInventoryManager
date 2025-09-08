@@ -6,15 +6,15 @@ import java.sql.Timestamp;
 public class LogItem {
     private String created_at;
     private String type;
-    private String username;
+    private String user;
     private String description;
 
     public LogItem() {};
 
-    public LogItem(String timestamp, String type, String username, String description) {
+    public LogItem(String timestamp, String type, String user, String description) {
         this.created_at = created_at;
         this.type = type;
-        this.username = username;
+        this.user = user;
         this.description = description;
     }
 
@@ -34,12 +34,12 @@ public class LogItem {
         this.type = type;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getUser() {
+        return this.user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getDescription() {

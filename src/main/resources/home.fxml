@@ -135,7 +135,7 @@
                                         <TableColumn fx:id="fx_quantity" minWidth="25.0" text="QTY" />
                                         <TableColumn fx:id="fx_allocation" minWidth="25.0" text="Allocation" />
                                         <TableColumn fx:id="fx_purchaseorder" minWidth="25.0" text="PO" />
-                                        <TableColumn fx:id="fx_description" minWidth="25.0" text="Desciption" />
+                                        <TableColumn fx:id="fx_description" minWidth="25.0" text="Description" />
                                         <TableColumn fx:id="fx_location" minWidth="25.0" text="Location" />
                                     </columns>
                                     <columnResizePolicy>
