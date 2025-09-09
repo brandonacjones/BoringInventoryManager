@@ -3,9 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.CustomMenuItem?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -67,6 +70,50 @@
                               <Insets left="3.0" />
                            </padding>
                         </StackPane>
+                        <MenuButton fx:id="fx_filter_menubutton" mnemonicParsing="false" text="Filter Search">
+                          <items>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                <content>
+                                  <CheckBox fx:id="fx_partnumber_check" text="Part Number" />
+                                </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_testnumber_check" text="Test Number" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_serialnumber_check" text="Serial Number" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_quantity_check" text="Quantity" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_allocation_check" text="Allocation" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_purchaseorder_check" text="Purchase Order" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_description_check" text="Description" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem hideOnClick="false" mnemonicParsing="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_location_check" text="Location" />
+                                 </content>
+                              </CustomMenuItem>
+                          </items>
+                        </MenuButton>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" HBox.hgrow="ALWAYS">

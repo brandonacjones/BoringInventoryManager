@@ -33,7 +33,18 @@ import util.LogUtil;
 import static util.AlertUtil.showError;
 import static util.TimeUtil.getLocalTime;
 
+//TODO add dropdown filter for search bar
+//TODO update search function to only search selected fields
+
 public class MainController {
+    @FXML private CheckBox fx_partnumber_check;
+    @FXML private CheckBox fx_testnumber_check;
+    @FXML private CheckBox fx_serialnumber_check;
+    @FXML private CheckBox fx_quantity_check;
+    @FXML private CheckBox fx_allocation_check;
+    @FXML private CheckBox fx_purchaseorder_check;
+    @FXML private CheckBox fx_description_check;
+    @FXML private CheckBox fx_location_check;
     @FXML private TableView<InventoryItem> fx_table;
     @FXML private TableColumn<InventoryItem, String> fx_partnumber;
     @FXML private TableColumn<InventoryItem, Integer> fx_testnumber;
@@ -172,14 +183,25 @@ public class MainController {
 
     @FXML
     private void search() {
-        String current = fx_searchfield.getText().trim().toUpperCase();
+        String current = fx_searchfield.getText().trim().toLowerCase();
 
         ObservableList<InventoryItem> observableList = FXCollections.observableArrayList(items);
         FilteredList<InventoryItem> filteredList = new FilteredList<>(observableList, item -> true);
 
         filteredList.setPredicate(item ->
-                current.isEmpty() || item.getPartNumber().toUpperCase().contains(current));
-        fx_table.setItems(filteredList);
+                current.isEmpty() ||
+                        (item.getPartNumber().toLowerCase().contains(current) && fx_partnumber_check.isSelected()) ||
+                        (String.valueOf(item.getTestNumber()).contains(current) && fx_testnumber_check.isSelected()) ||
+                        (String.valueOf(item.getSerialNumber()).contains(current) && fx_serialnumber_check.isSelected()) ||
+                        (String.valueOf(item.getQuantity()).contains(current) && fx_quantity_check.isSelected()) ||
+                        (item.getAllocation().toLowerCase().contains(current) && fx_allocation_check.isSelected()) ||
+                        (String.valueOf(item.getPurchaseOrder()).contains(current) && fx_purchaseorder_check.isSelected()) ||
+                        (item.getDescription().toLowerCase().contains(current) && fx_description_check.isSelected()) ||
+                        (item.getLocation().toLowerCase().contains(current) && fx_location_check.isSelected())
+                );
+
+
+    fx_table.setItems(filteredList);
     }
 
     @FXML
