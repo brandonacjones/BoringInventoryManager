@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.CustomMenuItem?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -20,14 +22,6 @@
                <children>
                   <StackPane>
                      <children>
-                        <Button mnemonicParsing="false" text="Filter">
-                           <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </padding></Button>
-                     </children>
-                  </StackPane>
-                  <StackPane>
-                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
                            <StackPane.margin>
                               <Insets left="5.0" right="5.0" />
@@ -40,6 +34,29 @@
                            <padding>
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding></TextField>
+                     </children>
+                  </StackPane>
+                  <StackPane>
+                     <children>
+                        <MenuButton mnemonicParsing="false" text="Filter Search">
+                           <items>
+                              <CustomMenuItem mnemonicParsing="false" hideOnClick="false">
+                                <content>
+                                  <CheckBox fx:id="fx_type_check" text="Type" />
+                                </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem mnemonicParsing="false" hideOnClick="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_user_check" text="User" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem mnemonicParsing="false" hideOnClick="false">
+                                 <content>
+                                    <CheckBox fx:id="fx_description_check" text="Description" />
+                                 </content>
+                              </CustomMenuItem>
+                           </items>
+                        </MenuButton>
                      </children>
                   </StackPane>
                </children>

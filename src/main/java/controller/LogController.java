@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,6 +20,9 @@ import java.util.logging.Filter;
 
 public class LogController {
 
+    @FXML private CheckBox fx_type_check;
+    @FXML private CheckBox fx_user_check;
+    @FXML private CheckBox fx_description_check;
     @FXML private TableView<LogItem> fx_logtable;
     @FXML private TableColumn<LogItem, String> fx_timecol;
     @FXML private TableColumn<LogItem, String> fx_typecol;
@@ -53,9 +57,9 @@ public class LogController {
 
         filtered.setPredicate(logItem ->
             query.isEmpty() ||
-                    logItem.getType().toLowerCase().contains(query) ||
-                    logItem.getDescription().toLowerCase().contains(query) ||
-                    logItem.getUser().contains(query)
+                    (logItem.getType().toLowerCase().contains(query) && fx_type_check.isSelected()) ||
+                    (logItem.getDescription().toLowerCase().contains(query) && fx_description_check.isSelected()) ||
+                    (logItem.getUser().contains(query) && fx_user_check.isSelected())
         );
 
         fx_logtable.setItems(filtered);
